@@ -1,0 +1,42 @@
+{
+  "name": "typescript-demo",
+  "version": "1.0.0",
+  "description": "ts练手",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devServer": "webpack-dev-server --env.production=false --config build/webpack.dev.config.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DENNIE-HONG/typescript-demo.git"
+  },
+  "keywords": [
+    "typescript",
+    "react"
+  ],
+  "author": "hongluyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DENNIE-HONG/typescript-demo/issues"
+  },
+  "homepage": "https://github.com/DENNIE-HONG/typescript-demo#readme",
+  "devDependencies": {
+    "@types/webpack": "^4.41.16",
+    "@types/webpack-dev-server": "^3.11.0",
+    "babel-loader": "^8.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "ts-loader": "^7.0.5",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "@babel/core": "^7.10.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

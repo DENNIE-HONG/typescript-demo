@@ -1,0 +1,25 @@
+{
+    "extends": "stylelint-config-sass-guidelines",
+    "rules": {
+        "indentation": 4,
+        "selector-no-qualifying-type": [
+           true,
+           { "ignore": [ "attribute", "class" ] }
+        ],
+        "rule-empty-line-before": ["always", {
+            "except": ["inside-block"]
+        }],
+        "value-no-vendor-prefix": [
+            true,
+            { "ignoreValues": ["box", "input-placeholder", "placeholder"]}
+        ],
+        "property-no-vendor-prefix": [
+            true,
+            { "ignoreProperties": ["box-orient"]}
+        ],
+        "selector-no-vendor-prefix": [
+            true,
+            { "ignoreSelectors": ["::-webkit-input-placeholder", "/-moz-.*/", ":-ms-input-placeholder"]}
+        ]
+    }
+}

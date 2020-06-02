@@ -24,8 +24,19 @@
   "devDependencies": {
     "@types/webpack": "^4.41.16",
     "@types/webpack-dev-server": "^3.11.0",
+    "autoprefixer": "^9.8.0",
     "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
+    "eslint": "^7.1.0",
     "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.14.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.2",
+    "sass-resources-loader": "^2.0.3",
+    "stylelint": "^13.5.0",
+    "stylelint-config-sass-guidelines": "^7.0.0",
+    "stylelint-webpack-plugin": "^2.0.0",
     "ts-loader": "^7.0.5",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.3",
@@ -37,6 +48,8 @@
   "dependencies": {
     "@babel/core": "^7.10.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
   }
 }

@@ -8,6 +8,8 @@ import baseConfig from './webpack.base.config';
 import { WEBPACK_DEV_CONFIG } from '../config/webpack';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
 const config : webpack.Configuration = {
     mode: 'development',
     devtool: 'cheap-module-eval-source-map',
@@ -19,6 +21,9 @@ const config : webpack.Configuration = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css'
+        })
     ]
 };
 
@@ -41,7 +46,7 @@ const devServerConfig : WebpackDevServer.Configuration = {
         poll: 500
     }
 };
-const devConfig = () => merge(baseConfig, config, {
+const devConfig = (env) => merge(baseConfig(env), config, {
     devServer: devServerConfig
 });
 export default devConfig;

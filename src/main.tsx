@@ -8,12 +8,12 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import Home from './views/home';
 import 'assets/main.scss';
 const root = document.createElement('div');
+root.className = 'app';
 document.body.appendChild(root);
-
 
 render(
     <Router>
-        <Route path='/' component={Home} />
+        <Route path="/" component={Home} />
     </Router>,
     root
 );

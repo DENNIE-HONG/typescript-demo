@@ -28,13 +28,13 @@ const baseConfig = (env) => {
             rules: [
                 {
                     test: /\.jsx?$/,
-                    loader: 'babel-loader',
+                    loader: isProd ? 'babel-loader?cacheDirectory' : ['babel-loader', 'eslint-loader'],
                     exclude: /node_modules/,
                 },
                 {
                     test: /\.tsx?$/,
                     exclude: /node_modules/,
-                    use: ['babel-loader', 'ts-loader'],
+                    use: isProd ? ['babel-loader', 'ts-loader']:['babel-loader', 'ts-loader', 'eslint-loader']
                 },
                 {
                     test: /\.scss$/,

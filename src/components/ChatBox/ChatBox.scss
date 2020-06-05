@@ -1,0 +1,9 @@
+.chatbox {
+    padding: 15px 30px;
+    background-color: nth($fgray, 3);
+    &-input {
+        padding: 10px 20px;
+        font-size: nth($fz, 2);
+        border: 1px solid nth($fgray, 1);
+    }
+}

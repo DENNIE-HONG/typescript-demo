@@ -20,6 +20,16 @@
         "selector-no-vendor-prefix": [
             true,
             { "ignoreSelectors": ["::-webkit-input-placeholder", "/-moz-.*/", ":-ms-input-placeholder"]}
-        ]
+        ],
+        "order/order": [
+            {
+              "type": "at-rule",
+              "name": "include"
+            },
+            "declarations",
+            "rules",
+            "at-rules"
+        ],
+        "order/properties-alphabetical-order": null
     }
 }

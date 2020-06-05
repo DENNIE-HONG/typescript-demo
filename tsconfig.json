@@ -9,7 +9,14 @@
         "esModuleInterop": true,
         "lib": ["es2015", "es2016", "es2017", "dom"],
         "resolveJsonModule": true,
-        "module": "commonjs"
+        "module": "commonjs",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ],
+            "coms/*": ["src/components/*"]
+        }
     },
     "exclude": ["node_modules"]
 }

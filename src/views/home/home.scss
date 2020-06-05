@@ -1,0 +1,32 @@
+.home {
+    height: 100%;
+    position: relative;
+    &-box {
+        @include hid;
+        border-radius: 10px;
+        height: 500px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 800px;
+    }
+    &-aside {
+        background-color: rgb(52, 192, 52);
+        display: inline-block;
+        width: 200px;
+        height: 100%;
+        vertical-align: top;
+    }
+    &-content {
+        display: inline-flex;
+        height: 100%;
+        width: 600px;
+        flex-direction: column;
+        vertical-align: top;
+        background-color: #ccc;
+    }
+    &-main {
+        flex: 1;
+    }
+}

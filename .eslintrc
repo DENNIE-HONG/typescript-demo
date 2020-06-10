@@ -35,6 +35,7 @@
     "import/no-extraneous-dependencies": 0,
     "import/extensions": 0,
     "import/no-unresolved": 0,
+    "import/no-mutable-exports": 0,
     "jsx-a11y/heading-has-content": 0,
     "jsx-a11y/aria-props": 2,
     "jsx-a11y/label-has-for": 0,
@@ -114,6 +115,7 @@
     "valid-typeof": 2,
     "prefer-rest-params": 2,
     "no-var": 2,
-    "no-useless-escape": 2
+    "no-useless-escape": 2,
+    "react/jsx-props-no-spreading": 0
   }
 }

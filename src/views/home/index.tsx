@@ -3,7 +3,8 @@
  * @author hongluyan 2020-06-05
 */
 import React, { useEffect } from 'react';
-import ChatBox from 'coms/ChatBox';
+import ChatBox from 'con/ChatBox';
+import MessageList from 'con/MessageList';
 import './home.scss';
 function Home () {
     // 相当于 componentDidMount 和 componentDidUpdate:
@@ -18,7 +19,9 @@ function Home () {
                 </aside>
                 <section className="home-content">
                     <header>头部</header>
-                    <main className="home-main">聊天内容</main>
+                    <main className="home-main">
+                        <MessageList />
+                    </main>
                     <footer className="home-footer">
                         <ChatBox />
                     </footer>

@@ -21,7 +21,8 @@ const baseConfig = (env) => {
             alias: {
                 '@': resolve('src'),
                 assets: resolve('src/assets'),
-                coms: resolve('src/components')
+                coms: resolve('src/components'),
+                con: resolve('src/containers')
             }
         },
         module: {

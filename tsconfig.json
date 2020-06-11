@@ -16,7 +16,9 @@
                 "src/*"
             ],
             "coms/*": ["src/components/*"],
-            "con/*": ["src/containers/*"]
+            "con/*": ["src/containers/*"],
+            "api/*": ["src/api/*"],
+            "interface/*": ["src/interface/*"]
         }
     },
     "exclude": ["node_modules"]

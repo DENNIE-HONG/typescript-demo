@@ -4,21 +4,30 @@
 */
 import React, { useState, useEffect } from 'react';
 import MessageListCom from 'coms/MessageList';
-import IO from 'socket.io-client';
-const SOCKET_HOST = 'ws://localhost:3000';
-const socket = IO(SOCKET_HOST);
+import { getHistoryMessage, getBroadcastMessage } from 'api/socket';
+
 function MessageList () {
     const [list, setList] = useState([]);
     useEffect(() => {
-        socket.on('history', (data) => {
-            setList(data);
-        });
-        socket.on('broadcast', (data) => {
-            if (!data.length) {
-                return;
+        async function fetchData () {
+            try {
+                const res = await getHistoryMessage();
+                setList(res);
+            } catch (err) {
+                console.log(err);
             }
-            setList(data);
-        });
+        }
+
+        async function fetchBroadcast () {
+            try {
+                const res = await getBroadcastMessage();
+                setList(res);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchData();
+        fetchBroadcast();
     });
     return (
         <MessageListCom list={list} />

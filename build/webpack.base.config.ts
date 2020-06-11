@@ -22,7 +22,9 @@ const baseConfig = (env) => {
                 '@': resolve('src'),
                 assets: resolve('src/assets'),
                 coms: resolve('src/components'),
-                con: resolve('src/containers')
+                con: resolve('src/containers'),
+                api: resolve('src/api'),
+                interface: resolve('src/interface')
             }
         },
         module: {

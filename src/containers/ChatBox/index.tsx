@@ -3,30 +3,28 @@
  * @file hongluyan
 */
 import React, { Component } from 'react';
-import IO from 'socket.io-client';
 import ChatBoxCom from 'coms/ChatBox';
-const SOCKET_HOST = 'ws://localhost:3000';
+import { sendMessage } from 'api/socket';
 
 let ChatInput;
 interface ChatInput {
     input?:NodeList
 }
 function ChatBox (WrappedComponent) {
-    interface ChatBoxCon {
-        socket: {
-            emit: Function
-        }
-    }
     class ChatBoxCon extends Component {
         constructor (props) {
             super(props);
-            this.socket = IO(SOCKET_HOST);
             ChatInput.input = React.createRef();
         }
 
-        handleSend = () => {
+        handleSend = async () => {
             const { value } = ChatInput.input;
-            this.socket.emit('chat message', value);
+            try {
+                await sendMessage(value);
+                ChatInput.input.value = '';
+            } catch (err) {
+                console.log('发送失败');
+            }
         }
 
         render () {

@@ -20,7 +20,9 @@ function ChatBox (props:ChatBoxProps) {
                 type="text"
                 ref={(input) => { ChatInput.input = input; }}
             />
-            <div className="chatbox-btn" onClick={handleSend}>发送</div>
+            <button type="button" className="chatbox-btn" onClick={handleSend} title="发送">
+                <i className="iconfont icon-send"></i>
+            </button>
         </div>
     );
 }

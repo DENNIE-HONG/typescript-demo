@@ -6,8 +6,14 @@
         padding: 10px 20px;
         font-size: nth($fz, 2);
         border: 1px solid nth($fgray, 1);
+        vertical-align: middle;
     }
     &-btn {
-        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+        .iconfont {
+            font-size: 22px;
+            color: nth($fblack, 2);
+        }
     }
 }

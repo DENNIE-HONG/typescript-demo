@@ -36,7 +36,7 @@ const baseConfig = (env) => {
                 },
                 {
                     test: /\.tsx?$/,
-                    exclude: /node_modules/,
+                    exclude: [/node_modules/, resolve('src/assets/img')],
                     use: isProd ? ['babel-loader', 'ts-loader']:['babel-loader', 'ts-loader', 'eslint-loader']
                 },
                 {
@@ -72,6 +72,30 @@ const baseConfig = (env) => {
                             }
                         }
                     ]
+                },
+                {
+                    test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+                    include: resolve('src/assets/fonts'),
+                    use: [{
+                        loader: 'url-loader',
+                        options: {
+                            limit: 2096,
+                            publicPath: isProd ? '../': '/',
+                            name: isProd ? 'fonts/[name].[hash:7].[ext]' : 'fonts/[name].[ext]'
+                        }
+                    }]
+                },
+                {
+                    test: /\.(png|svg|jpe?g|gif)$/,
+                    include: resolve('src'),
+                    use: [{
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            publicPath: isProd ? '../' : '/',
+                            name: isProd ? 'img/[name].[hash:7].[ext]' : 'img/[name].[ext]'
+                        }
+                    }]
                 },
             ],
         },

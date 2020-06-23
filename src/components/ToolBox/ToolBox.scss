@@ -1,0 +1,9 @@
+.toolbox {
+    height: 100%;
+    width: 80px;
+    background-color: nth($fgreen, 1);
+    &-pic {
+        width: 50px;
+        height: 50px;
+    }
+}

@@ -30,6 +30,7 @@
             "rules",
             "at-rules"
         ],
-        "order/properties-alphabetical-order": null
+        "order/properties-alphabetical-order": null,
+        "max-nesting-depth": 4
     }
 }

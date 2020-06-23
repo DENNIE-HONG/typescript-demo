@@ -18,7 +18,8 @@
             "coms/*": ["src/components/*"],
             "con/*": ["src/containers/*"],
             "api/*": ["src/api/*"],
-            "interface/*": ["src/interface/*"]
+            "interface/*": ["src/interface/*"],
+            "assets/*": ["src/assets/*"]
         }
     },
     "exclude": ["node_modules"]

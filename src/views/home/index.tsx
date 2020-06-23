@@ -5,13 +5,14 @@
 import React from 'react';
 import ChatBox from 'con/ChatBox';
 import MessageList from 'con/MessageList';
+import ToolBox from 'coms/ToolBox';
 import './home.scss';
 function Home () {
     return (
         <div className="home">
             <div className="home-box">
                 <aside className="home-aside">
-                    旁边
+                    <ToolBox />
                 </aside>
                 <section className="home-content">
                     <header>头部</header>

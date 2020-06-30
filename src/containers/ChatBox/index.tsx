@@ -5,7 +5,8 @@
 import React, { Component } from 'react';
 import ChatBoxCom from 'coms/ChatBox';
 import { sendMessage } from 'api/socket';
-
+import LoginModal from 'con/LoginModal';
+import ReactDOM from 'react-dom';
 let ChatInput;
 interface ChatInput {
     input?:NodeList
@@ -27,9 +28,21 @@ function ChatBox (WrappedComponent) {
             }
         }
 
+        handleLogin = () => {
+            console.log('login');
+            const root = document.createElement('div');
+            root.className = 'modal-bg';
+            document.body.appendChild(root);
+            ReactDOM.render(
+                <LoginModal />,
+                root
+            );
+        }
+
         render () {
             const newProps = {
-                handleSend: this.handleSend
+                handleSend: this.handleSend,
+                handleLogin: this.handleLogin
             };
             return <WrappedComponent {...newProps} />;
         }

@@ -4,11 +4,13 @@
 */
 
 import IO from 'socket.io-client';
+import messageProps from 'interface/message';
 import { SOCKET_HOST, SOCKET_HISTORY, SOCKET_BROADCAST } from '../../config/socket';
 const socket = IO(SOCKET_HOST);
 /**
  * @param text, string
 */
+
 export const sendMessage = (message:string) => new Promise((resolve, reject) => {
     try {
         const data = {
@@ -25,7 +27,7 @@ export const sendMessage = (message:string) => new Promise((resolve, reject) => 
 /**
  * 获取消息
 */
-export const getHistoryMessage = () => new Promise((resolve, reject) => {
+export const getHistoryMessage = () => new Promise<Array<messageProps>>((resolve, reject) => {
     try {
         socket.on(SOCKET_HISTORY, (data) => {
             resolve(data);
@@ -35,7 +37,7 @@ export const getHistoryMessage = () => new Promise((resolve, reject) => {
     }
 });
 
-export const getBroadcastMessage = () => new Promise((resolve, reject) => {
+export const getBroadcastMessage = () => new Promise<Array<messageProps>>((resolve, reject) => {
     try {
         socket.on(SOCKET_BROADCAST, (data) => {
             resolve(data);

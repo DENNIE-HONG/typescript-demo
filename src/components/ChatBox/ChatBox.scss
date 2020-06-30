@@ -16,4 +16,22 @@
             color: nth($fblack, 2);
         }
     }
+    &-tip {
+        display: none;
+        text-align: center;
+        font-size: nth($fz, 2);
+        line-height: 38px;
+        &-btn {
+            font-size: nth($fz, 3);
+            color: nth($fgreen, 1);
+        }
+    }
+    &.active {
+        .chatbox-content {
+            display: none;
+        }
+        .chatbox-tip {
+            display: block;
+        }
+    }
 }

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/DENNIE-HONG/typescript-demo#readme",
   "devDependencies": {
+    "@types/react": "^16.9.41",
     "@types/webpack": "^4.41.16",
     "@types/webpack-dev-server": "^3.11.0",
     "@typescript-eslint/eslint-plugin": "^3.1.0",

@@ -36,7 +36,7 @@ const baseConfig = (env) => {
                 },
                 {
                     test: /\.tsx?$/,
-                    exclude: [/node_modules/, resolve('src/assets/img')],
+                    exclude: /node_modules/,
                     use: isProd ? ['babel-loader', 'ts-loader']:['babel-loader', 'ts-loader', 'eslint-loader']
                 },
                 {

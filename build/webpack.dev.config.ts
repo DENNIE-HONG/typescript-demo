@@ -10,7 +10,7 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const config : webpack.Configuration = {
+let config : webpack.Configuration = {
     mode: 'development',
     devtool: 'cheap-module-eval-source-map',
     output: {
@@ -46,7 +46,9 @@ const devServerConfig : WebpackDevServer.Configuration = {
         poll: 500
     }
 };
-const devConfig = (env) => merge(baseConfig(env), config, {
+config = Object.assign(config, {
     devServer: devServerConfig
 });
+const devConfig = (env) => merge(baseConfig(env), config);
+console.log(devConfig);
 export default devConfig;

@@ -15,6 +15,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-close::before {
+    content: '\ebb2';
+}
+
 .icon-send::before {
     content: '\eb9d';
 }

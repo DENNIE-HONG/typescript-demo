@@ -1,0 +1,16 @@
+.input {
+    padding: 10px;
+    font-size: nth($fz, 2);
+    background-color: nth($fblue, 3);
+    border: 1px solid nth($fgray, 5);
+    border-radius: 5px;
+    line-height: 1;
+    &-box {
+        width: 95%;
+        border: 0;
+        background-color: transparent;
+    }
+    .iconfont {
+        color: nth($fblack, 3);
+    }
+}

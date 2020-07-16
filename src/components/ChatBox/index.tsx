@@ -4,16 +4,23 @@
 */
 import React from 'react';
 import ChatInput from 'con/ChatBox';
+import LoginModal from 'con/LoginModal';
 import './ChatBox.scss';
 
 interface ChatBoxProps {
     handleSend?: () => void;
     isLogin: boolean;
     handleLogin: () => void;
+    showLogin: boolean;
 }
 
 function ChatBox (props:ChatBoxProps) {
-    const { handleSend, isLogin, handleLogin } = props;
+    const {
+        handleSend,
+        isLogin,
+        handleLogin,
+        showLogin
+    } = props;
     return (
         <div className={isLogin ? 'chatbox' : 'chatbox active'}>
             <div className="chatbox-content">
@@ -30,8 +37,8 @@ function ChatBox (props:ChatBoxProps) {
             <div className="chatbox-tip">游客朋友你好，请
                 <button type="button" className="chatbox-tip-btn" onClick={handleLogin}>登录</button>后参与聊天
             </div>
+            <LoginModal active={showLogin} />
         </div>
     );
 }
-
 export default ChatBox;

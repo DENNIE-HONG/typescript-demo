@@ -3,8 +3,8 @@
  * @author hongluyan
 */
 import React from 'react';
-import './MessageList.scss';
 import messageProps from 'interface/message';
+import './MessageList.scss';
 
 interface MessageListProps {
     list:Array<messageProps>

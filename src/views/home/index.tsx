@@ -6,7 +6,6 @@ import React from 'react';
 import ChatBox from 'con/ChatBox';
 import MessageList from 'con/MessageList';
 import ToolBox from 'coms/ToolBox';
-
 import './home.scss';
 function Home () {
     return (

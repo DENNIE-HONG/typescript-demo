@@ -5,17 +5,22 @@
 import React, { Component } from 'react';
 import ChatBoxCom from 'coms/ChatBox';
 import { sendMessage } from 'api/socket';
-import LoginModal from 'con/LoginModal';
-import ReactDOM from 'react-dom';
 let ChatInput;
 interface ChatInput {
-    input?:NodeList
+    input?:NodeList;
 }
+
 function ChatBox (WrappedComponent) {
-    class ChatBoxCon extends Component {
+    interface ChatBoxConState {
+        showLogin: boolean;
+    }
+    class ChatBoxCon extends Component<null, ChatBoxConState> {
         constructor (props) {
             super(props);
             ChatInput.input = React.createRef();
+            this.state = {
+                showLogin: false
+            };
         }
 
         handleSend = async () => {
@@ -29,20 +34,16 @@ function ChatBox (WrappedComponent) {
         }
 
         handleLogin = () => {
-            console.log('login');
-            const root = document.createElement('div');
-            root.className = 'modal-bg';
-            document.body.appendChild(root);
-            ReactDOM.render(
-                <LoginModal />,
-                root
-            );
+            this.setState({
+                showLogin: true
+            });
         }
 
         render () {
             const newProps = {
                 handleSend: this.handleSend,
-                handleLogin: this.handleLogin
+                handleLogin: this.handleLogin,
+                showLogin: this.state.showLogin
             };
             return <WrappedComponent {...newProps} />;
         }

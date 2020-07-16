@@ -12,8 +12,8 @@ function BaseInput (props:inputProps) {
     const { type = 'text' } = props;
     return (
         <div className="input">
-            <input type={type} />
-            <button type="button">
+            <input type={type} className="input-box" />
+            <button type="button" className="input-close">
                 <i className="iconfont icon-close"></i>
             </button>
         </div>

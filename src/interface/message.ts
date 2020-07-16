@@ -3,9 +3,11 @@
  * @author hongluyan
 */
 
-export default interface messageProps {
+interface messageProps {
     message:string,
     name:string,
     avatar:string,
     time:string
 }
+
+export default messageProps;

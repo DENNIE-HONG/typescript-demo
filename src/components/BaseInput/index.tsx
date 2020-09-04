@@ -7,12 +7,13 @@ import './BaseInput.scss';
 
 interface inputProps {
     type: string;
+    onChange: () => void;
 }
 function BaseInput (props:inputProps) {
-    const { type = 'text' } = props;
+    const { type = 'text', onChange } = props;
     return (
         <div className="input">
-            <input type={type} className="input-box" />
+            <input type={type} className="input-box" onChange={onChange} />
             <button type="button" className="input-close">
                 <i className="iconfont icon-close"></i>
             </button>

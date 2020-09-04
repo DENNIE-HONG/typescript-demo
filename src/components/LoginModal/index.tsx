@@ -4,7 +4,7 @@
 */
 import React, { Component } from 'react';
 import Modal from 'con/Modal';
-import BaseInput from 'coms/BaseInput';
+import BaseInput from 'con/BaseInput';
 import BaseTabs, { BaseTabsPane } from 'con/BaseTabs';
 import './LoginModal.scss';
 

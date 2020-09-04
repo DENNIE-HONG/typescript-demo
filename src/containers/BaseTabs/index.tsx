@@ -3,7 +3,7 @@
  * @param {String}   activeName, 一开始选中的tab名字
  * @param {String}   textAlign, tab对齐，默认左对齐
  * @param {Function} tabClick, 切换tab的回调事件，参数为选中tab的name
- * @author luyanhong 2019-08-16
+ * @author luyanhong 2020-09-04
  * @example
  * <BaseTabs activeName="必须" tabClick={function(){}}>
  *  <BaseTabsPane label="xxx" name="必须"></BaseTabsPane>

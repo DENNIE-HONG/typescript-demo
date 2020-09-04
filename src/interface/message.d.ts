@@ -4,10 +4,10 @@
 */
 
 interface messageProps {
-    message:string,
-    name:string,
-    avatar:string,
-    time:string
+    message:string;
+    name:string;
+    avatar:string;
+    time:string;
 }
 
 export default messageProps;

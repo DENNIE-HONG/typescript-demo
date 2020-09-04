@@ -1,0 +1,25 @@
+.login-modal {
+    width: 400px;
+    padding: 20px;
+    background-color: $fwhite;
+    border-radius: 5px;
+    &-content {
+        padding: 0 20px 20px 30px;
+    }
+    &-item {
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        font-size: nth($fz, 2);
+        color: nth($fblack, 2);
+    }
+    &-btn {
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+        background-color: nth($fgreen, 1);
+        color: $fwhite;
+        line-height: 35px;
+        border-radius: 5px;
+    }
+}

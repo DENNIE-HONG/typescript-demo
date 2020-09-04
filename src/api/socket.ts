@@ -4,7 +4,7 @@
 */
 
 import IO from 'socket.io-client';
-import messageProps from 'interface/message';
+import messageProps from 'interface/message.d';
 import { SOCKET_HOST, SOCKET_HISTORY, SOCKET_BROADCAST } from '../../config/socket';
 const socket = IO(SOCKET_HOST);
 /**

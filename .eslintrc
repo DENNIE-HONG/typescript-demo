@@ -54,7 +54,7 @@
     "no-console": 0,
     "no-multi-spaces": 1,
     "no-multiple-empty-lines": [ 2, {"max": 2}],
-    "no-unused-vars": [1, {"vars": "all", "args": "after-used"}],
+    "no-unused-vars": 0,
     "no-redeclare": 2,
     "no-trailing-spaces": 1,
     "no-dupe-keys": 2,
@@ -117,6 +117,7 @@
     "prefer-rest-params": 2,
     "no-var": 2,
     "no-useless-escape": 2,
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "@typescript-eslint/no-unused-vars": 1
   }
 }

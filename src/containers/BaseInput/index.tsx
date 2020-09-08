@@ -5,34 +5,39 @@
 
 import React, { Component } from 'react';
 import BaseInputComponent from 'coms/BaseInput';
-
+const MAX_LEN = 10;
 interface BaseInputProps {
     type?: string;
+    name: string;
 }
+let BaseInputCon;
 function BaseInput (WrappedComponent) {
     return class extends Component<BaseInputProps> {
         constructor (props) {
             super(props);
-            this.state = {
-                value: ''
-            };
+            const { name } = props;
+            BaseInputCon[name] = React.createRef();
         }
 
-        handleChange = (event) => {
-            this.setState({
-                value: event.target.value
-            });
+        handleRef = (input) => {
+            BaseInputCon[this.props.name] = input;
+        }
+
+        handleClear = () => {
+            BaseInputCon[this.props.name].value = '';
         }
 
         render () {
             const newProps = {
-                onChange: this.handleChange
+                handleRef: this.handleRef,
+                handleClear: this.handleClear
             };
             return <WrappedComponent {...this.props} {...newProps} />;
         }
     };
 }
-const BaseInputCon = BaseInput(BaseInputComponent);
+BaseInputCon = BaseInput(BaseInputComponent);
 export default BaseInputCon;
 export { BaseInput };
+export { MAX_LEN };
 

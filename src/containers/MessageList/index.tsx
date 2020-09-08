@@ -29,9 +29,7 @@ function MessageList () {
         fetchData();
         fetchBroadcast();
     });
-    return (
-        <MessageListCom list={list} />
-    );
+    return <MessageListCom list={list} />;
 }
 
 export default MessageList;

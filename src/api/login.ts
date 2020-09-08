@@ -24,7 +24,7 @@ interface resProps {
 /**
  * 登录
 */
-export const login = (loginName:string, loginPassword:string) => new Promise<resProps>((resolve, reject) => {
+export const login = ({ loginName, loginPassword }) => new Promise<resProps>((resolve, reject) => {
     if (loginName === '') {
         reject({
             code: 501,
@@ -39,10 +39,17 @@ export const login = (loginName:string, loginPassword:string) => new Promise<res
     }
     const nickName = localStorage.getItem(NICKNAME);
     const password = localStorage.getItem(PASSWORD);
+
+    if (!nickName) {
+        reject({
+            code: 503,
+            message: '用户名未注册'
+        });
+    }
     if (loginName !== nickName || loginPassword !== password) {
         reject({
-            code: 501,
-            message: '账号或者密码不争取'
+            code: 504,
+            message: '账号或者密码不正确'
         });
     }
     localStorage.setItem(LOGIN, 'true');
@@ -52,7 +59,7 @@ export const login = (loginName:string, loginPassword:string) => new Promise<res
 /**
  * 注册
 */
-export const signUp = (loginName:string, loginPassword:string) => new Promise<resProps>((resolve, reject) => {
+export const signUp = ({ loginName, loginPassword }) => new Promise<resProps>((resolve, reject) => {
     if (loginName === '') {
         reject({
             code: 501,
@@ -77,23 +84,6 @@ export const signUp = (loginName:string, loginPassword:string) => new Promise<re
     resolve(successRes);
 });
 
-// 获取用户详情
-export const getUserDetail = async () => {
-    try {
-        const res:resProps = await getLoginStatus();
-        const { data } = res;
-        return {
-            code: 200,
-            data
-        };
-    } catch {
-        return {
-            code: 500,
-            message: '未登录'
-        };
-    }
-}
-
 /**
  * 登录状态
 */
@@ -109,13 +99,30 @@ export const getLoginStatus = () => new Promise<resProps>((resolve, reject) => {
     const data: dataProps = {
         nickName
     };
-    const res:resProps = { ...successRes, data};
+    const res:resProps = { ...successRes, data };
     resolve(res);
 });
+
+// 获取用户详情
+export const getUserDetail = async () => {
+    try {
+        const res:resProps = await getLoginStatus();
+        const { data } = res;
+        return {
+            code: 200,
+            data
+        };
+    } catch {
+        return {
+            code: 500,
+            message: '未登录'
+        };
+    }
+};
 
 
 // 退出登录
 export const logout = () => new Promise<resProps>((resolve, reject) => {
-    localStorage.removeItem(LOGIN)
+    localStorage.removeItem(LOGIN);
     resolve(successRes);
 });

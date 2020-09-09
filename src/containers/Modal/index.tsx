@@ -10,7 +10,9 @@ interface Modal {
 
 interface modalProps {
     active: Boolean;
+    onClick: () => void;
 }
+
 class Modal extends Component<modalProps> {
     constructor (props) {
         super(props);
@@ -19,13 +21,7 @@ class Modal extends Component<modalProps> {
 
     componentDidMount () {
         document.body.appendChild(this.$el);
-        this.$el.addEventListener('click', (e) => {
-            const target = e.target as HTMLDivElement;
-            if (target && !target.className.includes('modal-bg')) {
-                return;
-            }
-            this.closeModal();
-        });
+        this.$el.addEventListener('click', this.props.onClick, false);
     }
 
     componentWillUnmount () {

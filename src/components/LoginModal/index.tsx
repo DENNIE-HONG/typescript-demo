@@ -16,6 +16,7 @@ interface LoginModalProps {
     loginPasswordName: string;
     handleRegister:() => void;
     handleLogin: () => void;
+    onClick?: (any?) => void;
 }
 
 function LoginModal (props:LoginModalProps) {
@@ -26,10 +27,11 @@ function LoginModal (props:LoginModalProps) {
         registerTextName,
         registerPasswordName,
         loginTextName,
-        loginPasswordName
+        loginPasswordName,
+        onClick
     } = props;
     return (
-        <Modal active={active}>
+        <Modal active={active} onClick={onClick}>
             <section className="login-modal">
                 <BaseTabs activeName="login" textAlign="center">
                     <BaseTabsPane label="登录" name="login">

@@ -1,5 +1,7 @@
 /**
  * @file 输入框容器组件，
+ * @param {Stirng} name, 必须
+ * @param {String} type，默认‘text’
  * @author hongluyanb 2020-09-04
 */
 

@@ -1,12 +1,15 @@
 /**
  * @file 登录弹窗, 容器组件，登录弹窗事件
+ * @param {Boolean} active, 是否显示
+ * @param {Function} closeLoginModal, 关闭登录框事件
  * @author hongluyan
 */
 import React, { Component } from 'react';
 import LoginModalCom from 'coms/LoginModal';
 import BaseInput, { MAX_LEN } from 'con/BaseInput';
 import { signUp, login } from 'api/login';
-
+import { connect } from 'react-redux';
+import { loginModalShowAction, loginModalCloseAction } from '@/redux/actions';
 const REGISTER_TEXT_NAME = 'register';
 const REGISTER_PASSWORD_NAME = 'registerPass';
 const LOGIN_TEXT_NAME = 'login';
@@ -14,18 +17,32 @@ const LOGIN_PASSWORD_NAME = 'loginPass';
 
 interface LoginModalProps {
     active: boolean;
+    closeLoginModal?: () => void;
 }
 
-interface LoginModalState {
-    active: boolean;
-}
-
-class LoginModal extends Component<LoginModalProps, LoginModalState> {
-    constructor (props) {
-        super(props);
-        this.state = {
-            active: props.active
+const mapDispatchToProps = (dispatch) => ({
+    showLoginModal: () => {
+        const payload = {
+            active: true
         };
+        dispatch(loginModalShowAction(payload));
+    },
+    closeLoginModal: () => {
+        const payload = {
+            active: false
+        };
+        dispatch(loginModalCloseAction(payload));
+    }
+});
+
+@connect(null, mapDispatchToProps)
+class LoginModal extends Component<LoginModalProps, null> {
+    handleClose = (e) => {
+        const target = e.target as HTMLDivElement;
+        if (target && !target.className.includes('modal-bg')) {
+            return;
+        }
+        this.props.closeLoginModal();
     }
 
     // 注册事件
@@ -85,15 +102,18 @@ class LoginModal extends Component<LoginModalProps, LoginModalState> {
     }
 
     handleSuccess = (message) => {
-        alert(message);
-        this.setState({
-            active: false
-        });
+        console.log(message);
+        this.props.closeLoginModal();
+        BaseInput[REGISTER_TEXT_NAME].value = '';
+        BaseInput[REGISTER_PASSWORD_NAME].value = '';
+        BaseInput[LOGIN_TEXT_NAME].value = '';
+        BaseInput[LOGIN_PASSWORD_NAME].value = '';
     }
 
     async fetch (fetchFun, param) {
         try {
             await fetchFun(param);
+            this.handleSuccess('成功');
         } catch (error) {
             const { message } = error;
             this.handleError(message);
@@ -107,7 +127,8 @@ class LoginModal extends Component<LoginModalProps, LoginModalState> {
             registerTextName: REGISTER_TEXT_NAME,
             registerPasswordName: REGISTER_PASSWORD_NAME,
             loginTextName: LOGIN_TEXT_NAME,
-            loginPasswordName: LOGIN_PASSWORD_NAME
+            loginPasswordName: LOGIN_PASSWORD_NAME,
+            onClick: this.handleClose
         };
         return <LoginModalCom {...this.props} {...newProps} />;
     }

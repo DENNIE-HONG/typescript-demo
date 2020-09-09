@@ -12,7 +12,6 @@
 import React, { PureComponent } from 'react';
 import BaseTabsPane from 'coms/BaseTabs/BaseTabsPane';
 import BaseTabsCom from 'coms/BaseTabs';
-// import PropTypes from 'prop-types';
 
 interface BaseTabsProps {
     tabClick?: (string) => void;

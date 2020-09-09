@@ -5,22 +5,38 @@
 import React, { Component } from 'react';
 import ChatBoxCom from 'coms/ChatBox';
 import { sendMessage } from 'api/socket';
+import { connect } from 'react-redux';
+import { loginModalShowAction } from '@/redux/actions';
+
 let ChatInput;
 interface ChatInput {
     input?:NodeList;
 }
+const mapDispatchToProps = (dispatch) => ({
+    showLoginModal: () => {
+        const payload = {
+            active: true
+        };
+        dispatch(loginModalShowAction(payload));
+    }
+});
+const mapStateToProps = (state) => {
+    const { active } = state.loginModalReducer;
+    return {
+        showLogin: active
+    };
+};
 
 function ChatBox (WrappedComponent) {
-    interface ChatBoxConState {
+    interface ChatBoxConProps {
+        showLoginModal: () => void;
         showLogin: boolean;
     }
-    class ChatBoxCon extends Component<null, ChatBoxConState> {
+    @connect(mapStateToProps, mapDispatchToProps)
+    class ChatBoxCon extends Component<ChatBoxConProps, null> {
         constructor (props) {
             super(props);
             ChatInput.input = React.createRef();
-            this.state = {
-                showLogin: false
-            };
         }
 
         handleSend = async () => {
@@ -34,18 +50,16 @@ function ChatBox (WrappedComponent) {
         }
 
         handleLogin = () => {
-            this.setState({
-                showLogin: true
-            });
+            this.props.showLoginModal();
         }
 
         render () {
             const newProps = {
                 handleSend: this.handleSend,
                 handleLogin: this.handleLogin,
-                showLogin: this.state.showLogin
+                showLogin: this.props.showLogin
             };
-            return <WrappedComponent {...newProps} />;
+            return <WrappedComponent {...this.props} {...newProps} />;
         }
     }
     return ChatBoxCon;

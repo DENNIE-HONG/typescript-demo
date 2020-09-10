@@ -14,11 +14,12 @@ const defaultState = {
 const loginReducer = (state = defaultState, action) => {
     if (action.type === LOGIN_TODO) {
         const { userInfo } = action.payload;
+        const newUserInfo = { ...state.userInfo, ...userInfo };
         const newState = {
-            userInfo,
+            userInfo: newUserInfo,
             isLogin: true
         };
-        return { ...state, ...newState };
+        return newState;
     }
     if (action.type === LOGOUT_TODO) {
         return defaultState;

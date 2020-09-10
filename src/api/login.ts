@@ -26,28 +26,27 @@ interface resProps {
 */
 export const login = ({ loginName, loginPassword }) => new Promise<resProps>((resolve, reject) => {
     if (loginName === '') {
-        reject({
+        return reject({
             code: 501,
             message: '账号不为空'
         });
     }
     if (loginPassword === '') {
-        reject({
+        return reject({
             code: 502,
             message: '密码错误不为空'
         });
     }
     const nickName = localStorage.getItem(NICKNAME);
     const password = localStorage.getItem(PASSWORD);
-
-    if (!nickName) {
-        reject({
+    if (loginName !== localStorage.getItem(NICKNAME)) {
+        return reject({
             code: 503,
             message: '用户名未注册'
         });
     }
     if (loginName !== nickName || loginPassword !== password) {
-        reject({
+        return reject({
             code: 504,
             message: '账号或者密码不正确'
         });
@@ -61,20 +60,20 @@ export const login = ({ loginName, loginPassword }) => new Promise<resProps>((re
 */
 export const signUp = ({ loginName, loginPassword }) => new Promise<resProps>((resolve, reject) => {
     if (loginName === '') {
-        reject({
+        return reject({
             code: 501,
             message: '账号不为空'
         });
     }
     if (loginPassword === '') {
-        reject({
+        return reject({
             code: 502,
             message: '密码错误不为空'
         });
     }
     const nickName = localStorage.getItem(NICKNAME);
     if (loginName === nickName) {
-        reject({
+        return reject({
             code: 501,
             message: '账号已注册'
         });
@@ -90,7 +89,7 @@ export const signUp = ({ loginName, loginPassword }) => new Promise<resProps>((r
 export const getLoginStatus = () => new Promise<resProps>((resolve, reject) => {
     const isLogin:string = localStorage.getItem(LOGIN);
     if (!isLogin) {
-        reject({
+        return reject({
             code: 301,
             message: '未登录'
         });

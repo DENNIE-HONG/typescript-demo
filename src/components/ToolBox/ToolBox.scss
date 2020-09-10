@@ -1,9 +1,29 @@
 .toolbox {
+    display: flex;
     height: 100%;
     width: 80px;
+    flex-direction: column;
+    align-items: center;
     background-color: nth($fgreen, 1);
+    overflow: hidden;
+    justify-content: space-between;
     &-pic {
         width: 50px;
         height: 50px;
+        margin-top: 50px;
+    }
+    &-btns {
+        margin-bottom: 50px;
+        .iconfont {
+            font-size: 30px;
+            color: $fwhite;
+        }
+    }
+    &-btn {
+        display: block;
+        &,
+        + .toolbox-btn {
+            margin-top: 20px;
+        }
     }
 }

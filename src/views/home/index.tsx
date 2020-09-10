@@ -5,14 +5,17 @@
 import React, { Component } from 'react';
 import ChatBox from 'con/ChatBox';
 import MessageList from 'con/MessageList';
-import ToolBox from 'coms/ToolBox';
+import ToolBox from 'con/ToolBox';
 import { connect } from 'react-redux';
 import { loginAction } from '@/redux/actions';
 import { getLoginStatus } from 'api/login';
+import userInfoProps from 'interface/user.d';
 import './home.scss';
+
 interface HomeProps {
     login: (object) => void;
     isLogin: boolean;
+    userInfo: userInfoProps;
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,9 +27,10 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 const mapStateToProps = (state) => {
-    const { isLogin } = state.loginReducer;
+    const { isLogin, userInfo } = state.loginReducer;
     return {
-        isLogin
+        isLogin,
+        userInfo
     };
 };
 @connect(mapStateToProps, mapDispatchToProps)
@@ -38,19 +42,18 @@ class Home extends Component<HomeProps, null> {
                 nickName: res.data.nickName
             };
             this.props.login(userInfo);
-            console.log(res);
         } catch (err) {
             console.log(err);
         }
     }
 
     render () {
-        const { isLogin } = this.props;
+        const { isLogin, userInfo } = this.props;
         return (
             <div className="home">
                 <div className="home-box">
                     <aside className="home-aside">
-                        <ToolBox />
+                        <ToolBox userInfo={userInfo} isLogin={isLogin} />
                     </aside>
                     <section className="home-content">
                         <header>头部</header>

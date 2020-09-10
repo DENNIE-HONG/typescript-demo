@@ -15,6 +15,14 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-poweroff::before {
+    content: '\e78c';
+}
+
+.icon-github-fill::before {
+    content: '\e885';
+}
+
 .icon-close::before {
     content: '\ebb2';
 }

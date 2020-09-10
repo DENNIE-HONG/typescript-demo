@@ -103,11 +103,7 @@ class LoginModal extends Component<LoginModalProps, null> {
 
     handleSuccess = (message) => {
         console.log(message);
-        this.props.closeLoginModal();
-        BaseInput[REGISTER_TEXT_NAME].value = '';
-        BaseInput[REGISTER_PASSWORD_NAME].value = '';
-        BaseInput[LOGIN_TEXT_NAME].value = '';
-        BaseInput[LOGIN_PASSWORD_NAME].value = '';
+        window.location.reload();
     }
 
     async fetch (fetchFun, param) {

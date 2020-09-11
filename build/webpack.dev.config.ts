@@ -33,6 +33,7 @@ const devServerConfig : WebpackDevServer.Configuration = {
     hot: true,
     publicPath: WEBPACK_DEV_CONFIG.assetsPublicPath,
     overlay: true,
+    host: WEBPACK_DEV_CONFIG.ip,
     stats: {
         colors: true,
         modules: false,

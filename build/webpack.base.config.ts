@@ -115,7 +115,10 @@ const baseConfig = (env) => {
                 }
                 // favicon: path.resolve(__dirname, '../favicon.ico')
             }),
-            new StylelintPlugin()
+            new StylelintPlugin(),
+            new webpack.EnvironmentPlugin({
+                IP_ADRESS: WEBPACK_COMMON_CONFIG.ip
+            })
         ]
     }
     return config;

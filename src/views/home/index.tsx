@@ -51,20 +51,18 @@ class Home extends Component<HomeProps, null> {
         const { isLogin, userInfo } = this.props;
         return (
             <div className="home">
-                <div className="home-box">
-                    <aside className="home-aside">
-                        <ToolBox userInfo={userInfo} isLogin={isLogin} />
-                    </aside>
-                    <section className="home-content">
-                        <header>头部</header>
-                        <main className="home-main">
-                            <MessageList />
-                        </main>
-                        <footer className="home-footer">
-                            <ChatBox isLogin={isLogin} />
-                        </footer>
-                    </section>
-                </div>
+                <aside className="home-aside">
+                    <ToolBox userInfo={userInfo} isLogin={isLogin} />
+                </aside>
+                <section className="home-content">
+                    <header className="home-header">群名</header>
+                    <main className="home-main">
+                        <MessageList />
+                    </main>
+                    <footer className="home-footer">
+                        <ChatBox isLogin={isLogin} />
+                    </footer>
+                </section>
             </div>
         );
     }

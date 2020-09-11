@@ -1,7 +1,8 @@
 .chatbox {
-    padding: 15px 30px;
-    background-color: nth($fgray, 3);
+    padding: 10px 30px;
+    background-color: rgba(255, 255, 255, 0.5);
     &-input {
+        width: 80%;
         margin: 0 15px;
         padding: 10px 20px;
         font-size: nth($fz, 2);
